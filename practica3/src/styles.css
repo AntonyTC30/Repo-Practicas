@@ -1,0 +1,332 @@
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --secondary-color: #1e293b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --text-color: #334155;
+    --light-gray: #f1f5f9;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.app {
+    width: 150%;
+    max-width: 800px;
+    min-height: 500px;
+    background-color: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin: 0 auto;
+    transition: var(--transition);
+}
+
+.app h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--secondary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Formulario de tareas */
+.todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.todo-form input {
+    width: 100%;
+    height: 50px;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border: 2px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    outline: none;
+    background-color: var(--light-gray);
+}
+
+.todo-form input:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.todo-form input.error {
+    border-color: var(--danger-color);
+    background-color: #fff5f5;
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    margin-top: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Botón Agregar */
+.add-button {
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    color: white;
+    background-color: var(--primary-color);
+    font-size: 1.1rem;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.add-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow);
+}
+
+.add-button:active {
+    transform: translateY(0);
+}
+
+/* Lista de tareas */
+.todo-list {
+    width: 100%;
+    margin: 30px auto;
+}
+
+.todo-item {
+    width: 100%;
+    min-height: 70px;
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    margin: 10px 0;
+    color: var(--text-color);
+    background-color: white;
+    border: 2px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+}
+
+.todo-item:hover {
+    transform: translateX(5px);
+    border-color: var(--primary-color);
+}
+
+.todo-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+}
+
+/* Icono de check */
+.icono-check {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-right: 15px;
+}
+
+.icono-check.bi-check-circle-fill {
+    color: var(--success-color);
+}
+
+.delete-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: var(--danger-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.delete-button:hover {
+    background-color: #dc2626;
+    transform: scale(1.05);
+}
+
+.delete-button:active {
+    transform: scale(0.95);
+}
+
+.todo-item.completed {
+    background-color: var(--light-gray);
+    border-color: var(--success-color);
+}
+
+.todo-item.completed span {
+    text-decoration: line-through;
+    color: #64748b;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--secondary-color);
+}
+
+.empty-state p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.empty-state .subtext {
+    font-size: 1rem;
+    color: #64748b;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo-item {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Loading state */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .app {
+        padding: 20px;
+    }
+
+    .app h1 {
+        font-size: 2rem;
+    }
+
+    .todo-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .delete-button {
+        align-self: flex-end;
+    }
+}
+
+.ant-layout-header {
+    background-color: #1890ff;
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    padding: 0;
+}
+
+/* Estilo del contenido */
+.ant-layout-content {
+    background-color: white;
+    padding: 20px;
+}
+
+/* Mejorar la apariencia de los botones */
+.ant-btn {
+    font-size: 14px;
+    margin: 5px;
+}
+
+.ant-btn-danger {
+    background-color: #ff4d4f;
+    border-color: #ff4d4f;
+}
+
+.ant-btn-danger:hover {
+    background-color: #ff0000;
+    border-color: #ff0000;
+}
+
+/* Estilo de la lista */
+.ant-list-item {
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.ant-card {
+    border-radius: 10px;
+}
+
+.ant-card-body {
+    padding: 20px;
+}
